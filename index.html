@@ -27,109 +27,115 @@
     </script>
 </head>
 <body>
-    <!-- Top Horizontal Banner (Width > Height) -->
-    <div class="ad-top">
+    <!-- TOP HORIZONTAL AD -->
+    <div class="ad-top-wrapper">
         <script type="text/javascript">
             atOptions = { 'key' : 'ea960b8685ebbbb0cc2c0dc030265711', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
         </script>
         <script type="text/javascript" src="//www.highperformanceformat.com/ea960b8685ebbbb0cc2c0dc030265711/invoke.js"></script>
     </div>
 
-    <div class="page-wrapper">
-        <!-- Left Vertical Skyscraper (Height > Width) -->
-        <div class="ad-side">
-            <script type="text/javascript">
-                atOptions = { 'key' : '7d10df9b51409f3d20aaa711a2b00808', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/7d10df9b51409f3d20aaa711a2b00808/invoke.js"></script>
-        </div>
+    <div class="site-layout">
+        <!-- LEFT VERTICAL AD -->
+        <aside class="ad-sidebar left">
+            <div class="ad-unit">
+                <script type="text/javascript">
+                    atOptions = { 'key' : '7d10df9b51409f3d20aaa711a2b00808', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/7d10df9b51409f3d20aaa711a2b00808/invoke.js"></script>
+            </div>
+        </aside>
 
-        <div class="main-container">
-            <header>
-                <h1 id="main-title">Ecotron Time</h1>
-                <nav>
-                    <button onclick="showTool('clock')" class="nav-btn active" id="btn-clock">Clock</button>
-                    <button onclick="showTool('alarm')" class="nav-btn" id="btn-alarm">Alarm</button>
-                    <button onclick="showTool('timer')" class="nav-btn" id="btn-timer">Timer</button>
-                    <button onclick="showTool('stopwatch')" class="nav-btn" id="btn-stopwatch">Stopwatch</button>
-                </nav>
-            </header>
+        <!-- MAIN TOOL SECTION (70% Width) -->
+        <main class="tool-center-stage">
+            <div class="main-container">
+                <header>
+                    <h1 id="main-title">Ecotron Time</h1>
+                    <nav class="tool-nav">
+                        <button onclick="showTool('clock')" class="nav-btn active" id="btn-clock">Clock</button>
+                        <button onclick="showTool('alarm')" class="nav-btn" id="btn-alarm">Alarm</button>
+                        <button onclick="showTool('timer')" class="nav-btn" id="btn-timer">Timer</button>
+                        <button onclick="showTool('stopwatch')" class="nav-btn" id="btn-stopwatch">Stopwatch</button>
+                    </nav>
+                </header>
 
-            <main>
-                <section id="clock-section" class="tool-section active">
-                    <div class="clock-display" id="current-time">00:00:00</div>
-                    <div class="date-display" id="current-date">Monday, January 1</div>
-                </section>
+                <div class="tool-content">
+                    <!-- Tool sections handled by script.js -->
+                    <section id="clock-section" class="tool-section active">
+                        <div class="clock-display" id="current-time">00:00:00</div>
+                        <div class="date-display" id="current-date">Monday, January 1</div>
+                    </section>
 
-                <section id="alarm-section" class="tool-section">
-                    <div class="alarm-controls">
-                        <input type="time" id="alarm-input" class="premium-input">
-                        <button onclick="setAlarm()" class="action-btn" id="set-alarm-btn">Set Alarm</button>
-                    </div>
-                    <div id="alarm-status" class="status-msg">No alarm set</div>
-                    <div id="active-alarms" class="alarms-list"></div>
-                </section>
+                    <section id="alarm-section" class="tool-section">
+                        <div class="alarm-controls">
+                            <input type="time" id="alarm-input" class="premium-input">
+                            <button onclick="setAlarm()" class="action-btn">Set Alarm</button>
+                        </div>
+                        <div id="alarm-status">No alarm set</div>
+                        <div id="active-alarms"></div>
+                    </section>
 
-                <section id="timer-section" class="tool-section">
-                    <div class="timer-display" id="timer-display">00:00:00</div>
-                    <div class="timer-controls">
-                        <input type="number" id="timer-h" placeholder="HH" min="0" max="23">
-                        <input type="number" id="timer-m" placeholder="MM" min="0" max="59">
-                        <input type="number" id="timer-s" placeholder="SS" min="0" max="59">
-                    </div>
-                    <div class="btn-group">
-                        <button onclick="startTimer()" class="action-btn" id="start-timer-btn">Start</button>
-                        <button onclick="pauseTimer()" class="action-btn secondary" id="pause-timer-btn">Pause</button>
-                        <button onclick="resetTimer()" class="action-btn danger" id="reset-timer-btn">Reset</button>
-                    </div>
-                </section>
+                    <section id="timer-section" class="tool-section">
+                        <div class="timer-display" id="timer-display">00:00:00</div>
+                        <div class="timer-controls">
+                            <input type="number" id="timer-h" placeholder="HH" min="0">
+                            <input type="number" id="timer-m" placeholder="MM" min="0">
+                            <input type="number" id="timer-s" placeholder="SS" min="0">
+                        </div>
+                        <div class="btn-group">
+                            <button onclick="startTimer()" class="action-btn">Start</button>
+                            <button onclick="pauseTimer()" class="action-btn secondary">Pause</button>
+                            <button onclick="resetTimer()" class="action-btn danger">Reset</button>
+                        </div>
+                    </section>
 
-                <section id="stopwatch-section" class="tool-section">
-                    <div class="stopwatch-display" id="stopwatch-display">00:00:00.00</div>
-                    <div class="btn-group">
-                        <button onclick="startStopwatch()" class="action-btn" id="start-sw-btn">Start</button>
-                        <button onclick="stopStopwatch()" class="action-btn secondary" id="stop-sw-btn">Stop</button>
-                        <button onclick="resetStopwatch()" class="action-btn danger" id="reset-sw-btn">Reset</button>
-                    </div>
-                    <div id="laps" class="laps-list"></div>
-                </section>
-
-                <article style="text-align: left; margin-top: 3rem; color: #94a3b8; font-size: 0.9rem; line-height: 1.6;">
-                    <h3 style="color: var(--text); margin-bottom: 1rem;">Complete Timekeeping Solution</h3>
-                    <p>Ecotron Time is your all-in-one productivity suite for precise timekeeping.</p>
-                </article>
-            </main>
-
-            <footer>
-                <div style="margin: 2rem 0; padding-top: 1rem; border-top: 1px solid var(--border);">
-                    <p style="margin-bottom: 10px; font-weight: 600;">Try our other tools:</p>
-                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; font-size: 0.8rem;">
-                        <a href="https://opti.ecotron.co.in" style="color: var(--primary); text-decoration: none;">Opti</a>
-                        <a href="https://sleep.ecotron.co.in" style="color: var(--primary); text-decoration: none;">Sleep</a>
-                        <a href="https://lexi.ecotron.co.in" style="color: var(--primary); text-decoration: none;">Lexi</a>
-                        <a href="https://whisper.ecotron.co.in" style="color: var(--primary); text-decoration: none;">Whisper</a>
-                        <a href="https://spin.ecotron.co.in" style="color: var(--primary); text-decoration: none;">Spin</a>
-                    </div>
+                    <section id="stopwatch-section" class="tool-section">
+                        <div class="stopwatch-display" id="stopwatch-display">00:00:00.00</div>
+                        <div class="btn-group">
+                            <button onclick="startStopwatch()" class="action-btn">Start</button>
+                            <button onclick="stopStopwatch()" class="action-btn secondary">Stop</button>
+                            <button onclick="resetStopwatch()" class="action-btn danger">Reset</button>
+                        </div>
+                        <div id="laps"></div>
+                    </section>
                 </div>
-                <p>&copy; 2026 Ecotron Infrastructure</p>
-            </footer>
-        </div>
 
-        <!-- Right Vertical Skyscraper (Height > Width) -->
-        <div class="ad-side">
-            <script type="text/javascript">
-                atOptions = { 'key' : '3da82e07ec7784cb1769192213ea5d85', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/3da82e07ec7784cb1769192213ea5d85/invoke.js"></script>
-        </div>
+                <article class="seo-about">
+                    <h3>Complete Timekeeping Solution</h3>
+                    <p>Ecotron Time is your all-in-one productivity suite for precise timekeeping. Professional-grade tools at your fingertips.</p>
+                </article>
+
+                <div class="related-tools">
+                    <p>Try our other tools:</p>
+                    <nav>
+                        <a href="https://opti.ecotron.co.in">Opti</a>
+                        <a href="https://sleep.ecotron.co.in">Sleep</a>
+                        <a href="https://lexi.ecotron.co.in">Lexi</a>
+                        <a href="https://whisper.ecotron.co.in">Whisper</a>
+                        <a href="https://spin.ecotron.co.in">Spin</a>
+                    </nav>
+                </div>
+                <div class="copyright">&copy; 2026 Ecotron Infrastructure</div>
+            </div>
+        </main>
+
+        <!-- RIGHT VERTICAL AD -->
+        <aside class="ad-sidebar right">
+            <div class="ad-unit">
+                <script type="text/javascript">
+                    atOptions = { 'key' : '3da82e07ec7784cb1769192213ea5d85', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/3da82e07ec7784cb1769192213ea5d85/invoke.js"></script>
+            </div>
+        </aside>
     </div>
 
-    <!-- Bottom Horizontal Banners (Width > Height) -->
-    <div class="ad-bottom" style="flex-direction: column; gap: 20px;">
+    <!-- BOTTOM HORIZONTAL ADS -->
+    <div class="ad-bottom-wrapper">
         <script async="async" data-cfasync="false" src="https://developdomicile.com/e1a505eb1dee6b945a3ae17bd687bb24/invoke.js"></script>
         <div id="container-e1a505eb1dee6b945a3ae17bd687bb24"></div>
 
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+        <div class="extra-banners">
             <script type="text/javascript">
                 atOptions = { 'key' : 'ae4a1f5a69de36fafe0e3be03f3b2fbb', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
             </script>
