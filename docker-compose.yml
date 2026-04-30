@@ -1,0 +1,18 @@
+services:
+  ecotron-time:
+    build: .
+    container_name: ecotron-time
+    restart: unless-stopped
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik"
+      - "traefik.http.routers.ecotron-time.rule=Host(`time.ecotron.co.in`)"
+      - "traefik.http.routers.ecotron-time.entrypoints=websecure"
+      - "traefik.http.routers.ecotron-time.tls.certresolver=myresolver"
+      - "traefik.http.services.ecotron-time.loadbalancer.server.port=80"
+
+networks:
+  traefik:
+    external: true

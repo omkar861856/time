@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecotron Time | Professional Time Tools</title>
+    <meta name="description" content="All-in-one professional clock tools: Alarm, Timer, and Stopwatch with a premium design.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="main-title">Ecotron Time</h1>
+            <nav>
+                <button onclick="showTool('clock')" class="nav-btn active" id="btn-clock">Clock</button>
+                <button onclick="showTool('alarm')" class="nav-btn" id="btn-alarm">Alarm</button>
+                <button onclick="showTool('timer')" class="nav-btn" id="btn-timer">Timer</button>
+                <button onclick="showTool('stopwatch')" class="nav-btn" id="btn-stopwatch">Stopwatch</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Clock Section -->
+            <section id="clock-section" class="tool-section active">
+                <div class="clock-display" id="current-time">00:00:00</div>
+                <div class="date-display" id="current-date">Monday, January 1</div>
+            </section>
+
+            <!-- Alarm Section -->
+            <section id="alarm-section" class="tool-section">
+                <div class="alarm-controls">
+                    <input type="time" id="alarm-input" class="premium-input">
+                    <button onclick="setAlarm()" class="action-btn" id="set-alarm-btn">Set Alarm</button>
+                </div>
+                <div id="alarm-status" class="status-msg">No alarm set</div>
+                <div id="active-alarms" class="alarms-list"></div>
+            </section>
+
+            <!-- Timer Section -->
+            <section id="timer-section" class="tool-section">
+                <div class="timer-display" id="timer-display">00:00:00</div>
+                <div class="timer-controls">
+                    <input type="number" id="timer-h" placeholder="HH" min="0" max="23">
+                    <input type="number" id="timer-m" placeholder="MM" min="0" max="59">
+                    <input type="number" id="timer-s" placeholder="SS" min="0" max="59">
+                </div>
+                <div class="btn-group">
+                    <button onclick="startTimer()" class="action-btn" id="start-timer-btn">Start</button>
+                    <button onclick="pauseTimer()" class="action-btn secondary" id="pause-timer-btn">Pause</button>
+                    <button onclick="resetTimer()" class="action-btn danger" id="reset-timer-btn">Reset</button>
+                </div>
+            </section>
+
+            <!-- Stopwatch Section -->
+            <section id="stopwatch-section" class="tool-section">
+                <div class="stopwatch-display" id="stopwatch-display">00:00:00.00</div>
+                <div class="btn-group">
+                    <button onclick="startStopwatch()" class="action-btn" id="start-sw-btn">Start</button>
+                    <button onclick="stopStopwatch()" class="action-btn secondary" id="stop-sw-btn">Stop</button>
+                    <button onclick="resetStopwatch()" class="action-btn danger" id="reset-sw-btn">Reset</button>
+                </div>
+                <div id="laps" class="laps-list"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Ecotron Infrastructure. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <audio id="alarm-sound" src="https://assets.mixkit.co/active_storage/sfx/1017/1017-preview.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
