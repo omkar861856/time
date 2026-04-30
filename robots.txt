@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://time.ecotron.co.in/sitemap.xml
