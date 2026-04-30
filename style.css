@@ -1,13 +1,12 @@
 :root {
     --bg-color: #0f172a;
     --card-bg: rgba(30, 41, 59, 0.7);
-    --primary: #8b5cf6;
-    --primary-glow: rgba(139, 92, 246, 0.5);
-    --secondary: #64748b;
-    --accent: #38bdf8;
-    --text: #f8fafc;
+    --text: #f1f5f9;
+    --primary: #3b82f6;
+    --secondary: #6366f1;
+    --accent: #8b5cf6;
     --danger: #ef4444;
-    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -28,14 +27,23 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    margin: 0;
+}
+
+.top-ad {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
 }
 
 .page-wrapper {
     display: flex;
-    gap: 20px;
-    max-width: 1200px;
-    width: 100%;
     justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1400px;
+    gap: 40px;
 }
 
 .container {
@@ -43,16 +51,18 @@ body {
     max-width: 600px;
     background: var(--card-bg);
     backdrop-filter: blur(12px);
-    border: 1px solid var(--glass);
-    border-radius: 24px;
+    border: 1px solid var(--border);
+    border-radius: 2rem;
     padding: 2rem;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     text-align: center;
     height: fit-content;
+    flex-shrink: 0;
 }
 
 .side-ad {
     width: 160px;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -60,47 +70,40 @@ body {
 
 @media (max-width: 1000px) {
     .page-wrapper { flex-direction: column; align-items: center; }
-    .side-ad { width: 100%; align-items: center; }
-}
-
-.top-ad {
-    margin-bottom: 20px;
+    .side-ad { display: none; }
 }
 
 header h1 {
     font-size: 2.5rem;
     font-weight: 600;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(to right, var(--primary), var(--accent));
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
 }
 
 nav {
     display: flex;
-    gap: 0.5rem;
     justify-content: center;
+    gap: 10px;
     margin-bottom: 2rem;
-    background: var(--glass);
-    padding: 0.5rem;
-    border-radius: 12px;
+    flex-wrap: wrap;
 }
 
 .nav-btn {
-    background: transparent;
-    border: none;
-    color: var(--secondary);
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 10px 20px;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-weight: 400;
 }
 
-.nav-btn.active {
+.nav-btn:hover, .nav-btn.active {
     background: var(--primary);
-    color: white;
-    box-shadow: 0 0 15px var(--primary-glow);
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
 }
 
 .tool-section {
@@ -117,87 +120,97 @@ nav {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Clock Styles */
 .clock-display {
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: 600;
-    letter-spacing: -1px;
     margin-bottom: 0.5rem;
+    letter-spacing: -2px;
 }
 
 .date-display {
-    color: var(--secondary);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    color: #94a3b8;
+    margin-bottom: 2rem;
 }
 
-/* Inputs & Buttons */
+.alarm-controls, .timer-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
 .premium-input {
-    background: var(--glass);
-    border: 1px solid var(--glass);
-    color: white;
-    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 12px;
     border-radius: 12px;
     font-size: 1.1rem;
-    outline: none;
-    transition: border 0.3s;
+    width: 150px;
 }
 
-.premium-input:focus {
-    border-color: var(--primary);
+.timer-controls input {
+    width: 70px;
+    text-align: center;
 }
 
 .action-btn {
     background: var(--primary);
     color: white;
     border: none;
-    padding: 0.8rem 1.5rem;
+    padding: 12px 24px;
     border-radius: 12px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.3s ease;
 }
 
 .action-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px -10px var(--primary);
+    box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.5);
 }
 
-.action-btn.secondary {
-    background: var(--secondary);
-}
+.action-btn.secondary { background: var(--secondary); }
+.action-btn.danger { background: var(--danger); }
 
-.action-btn.danger {
-    background: var(--danger);
-}
-
-/* Section Specifics */
-.alarm-controls, .timer-controls, .btn-group {
+.btn-group {
     display: flex;
-    gap: 1rem;
+    gap: 10px;
     justify-content: center;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.timer-controls input {
-    width: 60px;
-    text-align: center;
-    background: var(--glass);
-    border: 1px solid var(--glass);
-    color: white;
-    padding: 0.5rem;
-    border-radius: 8px;
+    margin-top: 1rem;
 }
 
 .timer-display, .stopwatch-display {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.status-msg {
+    margin-top: 10px;
+    color: #94a3b8;
+}
+
+.alarms-list, .laps-list {
+    margin-top: 2rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.alarm-item, .lap-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 footer {
-    margin-top: 2rem;
-    font-size: 0.8rem;
-    color: var(--secondary);
+    margin-top: 3rem;
+    color: #64748b;
+    font-size: 0.9rem;
 }
